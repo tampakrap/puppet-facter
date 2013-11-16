@@ -16,4 +16,4 @@ class facter::package {
     }
   }
 
-
+}
