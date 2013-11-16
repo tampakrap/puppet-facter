@@ -17,3 +17,4 @@ class facter::params {
     'default': { fail("$::osfamily is not supported") }
   }
 
+}
