@@ -14,7 +14,7 @@ class facter::params {
     }
     'redhat': {}
     'suse': {}
-    'default': { fail("$::osfamily is not supported") }
+    default: { fail("$::osfamily is not supported") }
   }
 
 }
