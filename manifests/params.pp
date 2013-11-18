@@ -13,7 +13,10 @@ class facter::params {
       $provider = 'portage'
     }
     'redhat': {}
-    'suse': {}
+    'suse': {
+      $pkgname  = 'facter'
+      $provider = 'zypper'
+    }
     default: { fail("$::osfamily is not supported") }
   }
 
