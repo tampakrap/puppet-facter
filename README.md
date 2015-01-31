@@ -13,7 +13,7 @@ where we can put [external facts](https://docs.puppetlabs.com/facter/latest/cust
 
 ## fact
 
-Additionally, this module provides the `fact`, that creates external facts:
+Additionally, this module provides the `fact` type/provider, that creates external facts:
 
     fact { 'environment':
       content => 'production',
