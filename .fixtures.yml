@@ -1,0 +1,6 @@
+fixtures:
+  repositories:
+    filemapper: "git://github.com/adrienthebo/puppet-filemapper.git"
+    portage: "git://github.com/gentoo/puppet-portage.git"
+  symlinks:
+    facter: "#{source_dir}"
