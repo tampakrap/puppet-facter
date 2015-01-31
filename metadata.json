@@ -1,0 +1,42 @@
+{
+  "name": "tampakrap-facter",
+  "version": "0.0.1",
+  "author": "Theo Chatzimichos",
+  "license": "Apache-2.0",
+  "summary": "Install facter and create custom facts",
+  "source": "https://github.com/tampakrap/puppet-facter",
+  "project_page": "https://forge.puppetlabs.com/tampakrap/facter",
+  "issues_url": "https://github.com/tampakrap/puppet-facter/issues",
+  "tags": ["facter"],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [ "7.8" ]
+    },
+    {
+      "operatingsystem": "Gentoo"
+    },
+    {
+      "operatingsystem": "openSUSE",
+      "operatingsystemrelease": [ "13.2" ]
+    },
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [ "6.0" ]
+    },
+    {
+      "operatingsystem": "SUSE",
+      "operatingsystemrelease": [ "12" ]
+    },
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [ "14.10" ]
+    }
+   ],
+  "dependencies": [
+    {
+      "name": "gentoo/portage",
+      "version_requirement": ">= 2.1.0"
+    }
+  ]
+}
