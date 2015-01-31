@@ -1,7 +1,7 @@
 {
   "name": "tampakrap-facter",
   "version": "0.0.1",
-  "author": "Theo Chatzimichos",
+  "author": ["Theo Chatzimichos", "Vikraman Choudhury"],
   "license": "Apache-2.0",
   "summary": "Install facter and create custom facts",
   "source": "https://github.com/tampakrap/puppet-facter",
