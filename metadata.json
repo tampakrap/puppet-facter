@@ -42,5 +42,11 @@
       "name": "gentoo/portage",
       "version_requirement": ">= 2.1.0"
     }
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": "3.x"
+    }
   ]
 }
