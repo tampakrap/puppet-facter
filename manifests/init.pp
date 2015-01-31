@@ -1,10 +1,8 @@
 class facter (
-  $pkgname         = $facter::params::pkgname,
+  $package_name    = undef,
   $ensure          = 'present',
   $provider        = $facter::params::provider,
-  $gentoo_keywords = $facter::params::gentoo_keywords,
-  $gentoo_use      = $facter::params::gentoo_use,
-  $install_options = $facter::params::install_options,
+  $install_options = undef,
 ) inherits facter::params {
 
   include facter::package
