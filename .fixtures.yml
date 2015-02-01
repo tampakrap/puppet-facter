@@ -1,6 +1,6 @@
 fixtures:
-  repositories:
-    filemapper: "git://github.com/adrienthebo/puppet-filemapper.git"
-    portage: "git://github.com/gentoo/puppet-portage.git"
+  forge_modules:
+    filemapper: "adrien/filemapper"
+    portage: "gentoo/portage"
   symlinks:
     facter: "#{source_dir}"
