@@ -5,7 +5,7 @@
   "license": "Apache-2.0",
   "summary": "Install facter and create custom facts",
   "source": "https://github.com/tampakrap/puppet-facter",
-  "project_page": "https://forge.puppetlabs.com/tampakrap/facter",
+  "project_page": "https://github.com/tampakrap/puppet-facter",
   "issues_url": "https://github.com/tampakrap/puppet-facter/issues",
   "tags": ["facter", "fact"],
   "operatingsystem_support": [
