@@ -28,6 +28,17 @@ describe Puppet::Type.type(:fact).provider(:fact) do
     it "should detect target correctly" do
       prop.should include(:target => "env")
     end
+
+    context "it should handle invalid inputs" do
+      invalid_filenames = [nil, "", " ", "foo.bar", "/etc/facter/facts.d/foo.bar"]
+      invalid_contents = [nil, "", " ", "=", "foo=", "=bar"]
+
+      invalid_filenames.product(invalid_contents).each do |filename, content|
+        it "should parse (#{filename}, #{content}) to an empty hash" do
+          described_class.parse_file(filename, content).should == [{}]
+        end
+      end
+    end
   end
 
   context "when formatting" do

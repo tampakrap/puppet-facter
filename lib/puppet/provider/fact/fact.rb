@@ -22,6 +22,7 @@ Puppet::Type.type(:fact).provide(:fact) do
     result = {}
     re = /^(.+?)=(.+)$/
     line = contents.lines.first
+    line = "" if line.nil?
 
     if match_data = re.match(line.chomp)
       result[:name] = match_data[1]
