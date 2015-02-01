@@ -1,5 +1,5 @@
+# This class should not be required directly
 class facter::package {
-
   if $facter::package_name {
     $package_name = $facter::package_name
   } elsif $facter::provider == 'zypper' and $::operatingsystemrelease > '13.2' {

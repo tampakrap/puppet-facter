@@ -1,3 +1,15 @@
+# == Class: facter
+#
+# Install the facter package and create the /etc/facter/facts.d directory
+#
+# == Example:
+#
+# class { 'facter'
+#   package_name => 'facter',
+#   provider     => 'gem',
+#   ensure       => 'latest',
+# }
+#
 class facter (
   $package_name    = undef,
   $ensure          = 'present',

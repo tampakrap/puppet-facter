@@ -1,3 +1,4 @@
+# Extra configuration for keywords and USE flags of the dev-ruby/facter package
 class facter::package::portage (
   $keywords = undef,
   $use      = undef,
