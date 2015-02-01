@@ -1,6 +1,6 @@
 {
   "name": "tampakrap-facter",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "author": ["Theo Chatzimichos", "Vikraman Choudhury"],
   "license": "Apache-2.0",
   "summary": "Install facter and create custom facts",
