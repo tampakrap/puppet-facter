@@ -59,11 +59,10 @@ describe Puppet::Type.type(:fact).provider(:fact) do
       described_class.format_file("/etc/facter/facts.d/env.txt", [absent_provider]).should be_empty
     end
 
-
     let(:nonexistent_provider) do
       stub("nonexistent_provider",
            :name => "environment",
-           :ensure => :absent,
+           :ensure => :present,
            :content => "production",
            :target => "environment"
           )
