@@ -17,25 +17,32 @@ Puppet::Type.type(:fact).provide(:fact) do
   end
 
   def self.parse_file(filename, contents)
-    parts = contents.split("=")
-    props = {}
-    props[:name] = parts[0].strip
-    props[:content] = parts[1].strip
-    props[:target] = File.basename(filename, ".txt")
-    return [props]
+    return [{}] if contents.nil?
+
+    result = {}
+    re = /^(.+?)=(.+)$/
+    line = contents.lines.first
+
+    if match_data = re.match(line.chomp)
+      result[:name] = match_data[1]
+      result[:content] = match_data[2]
+      result[:target] = File.basename(filename, ".txt")
+    end
+
+    return [result]
   end
 
   def self.format_file(filename, providers)
-    if providers.empty?
-      return ""
-    else
-      provider = providers[0]
-      if provider.ensure == :present and
-          provider.target == File.basename(filename, ".txt")
-        return "#{provider.name}=#{provider.content}\n"
-      else
-        return ""
-      end
+    return "" if providers.empty?
+
+    result = ""
+    provider = providers[0]
+    basename = File.basename(filename, ".txt")
+
+    if provider.ensure == :present and provider.target == basename
+      result = "#{provider.name}=#{provider.content}\n"
     end
+
+    return result
   end
 end
