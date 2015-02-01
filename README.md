@@ -29,3 +29,6 @@ This will create a file `/etc/facter/facts.d/env.txt` containing:
 * `content is mandatory. It can not be empty string or whitespace.
 * `$target` is optional. It defaults to the name of the resource.
 * `ensure` is optional. It defaults to `present`.
+
+The `fact` provider is based on the [filemapper](https://github.com/adrienthebo/puppet-filemapper)
+provider extension.
