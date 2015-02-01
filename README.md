@@ -11,6 +11,23 @@ Since puppet will pull facter as dependency, this module will let you track the
 installed version. Also, it will create the directory `/etc/facter/facts.d`,
 where we can put [external facts](https://docs.puppetlabs.com/facter/latest/custom_facts.html#external-facts)
 
+In order to use it, just import the facter class:
+
+    import facter
+
+You can specify extra options for the package installation, such as alternative
+`provider` (in case you want to install it from Gem instead of distro package),
+additional `install_options` or alternative `package_name`, eg:
+
+    class { 'facter':
+      package_name    => 'rubygem-facter',
+      install_options => {'--no-recommends', '--from': 'third_party_repo'},
+      ensure          => 'latest',
+    }
+
+(Please prefer to use [hiera](https://docs.puppetlabs.com/hiera/latest/) for
+your data though)
+
 ## fact
 
 Additionally, this module provides the `fact` type/resource, that creates
