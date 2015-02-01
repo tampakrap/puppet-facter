@@ -19,6 +19,14 @@ describe Puppet::Type.type(:fact) do
   end
 
   context "when validating content" do
+    it "should be mandatory" do
+      expect { described_class.new(:name => "environment") }.to raise_error
+    end
+
+    it "should reject empty string" do
+      expect { described_class.new(:name => "environment", :content => "") }.to raise_error
+    end
+
     it "should reject only whitespace" do
       expect { described_class.new(:name => "environment", :content => " ") }.to raise_error
     end
@@ -30,7 +38,7 @@ describe Puppet::Type.type(:fact) do
   end
 
   context "when validating target" do
-    resource = described_class.new(:name => "environment")
+    resource = described_class.new(:name => "environment", :content => "production")
 
     it "can be optional" do
       expect { resource }.to_not raise_error
@@ -41,7 +49,7 @@ describe Puppet::Type.type(:fact) do
     end
 
     it "should accept specified values" do
-      described_class.new(:name => "environment", :target => "env").should(:target).should == "env"
+      described_class.new(:name => "environment", :content => "production", :target => "env").should(:target).should == "env"
     end
   end
 
