@@ -3,7 +3,7 @@
   "version": "0.1.1",
   "author": ["Theo Chatzimichos", "Vikraman Choudhury"],
   "license": "Apache-2.0",
-  "summary": "Install facter and create custom facts",
+  "summary": "Install facter and create external facts",
   "source": "https://github.com/tampakrap/puppet-facter",
   "project_page": "https://github.com/tampakrap/puppet-facter",
   "issues_url": "https://github.com/tampakrap/puppet-facter/issues",
