@@ -13,10 +13,17 @@ where we can put [external facts](https://docs.puppetlabs.com/facter/latest/cust
 
 ## fact
 
-Additionally, this module provides the `fact` type/provider, that creates external facts:
+Additionally, this module provides the `fact` type/resource, that creates
+external facts:
 
     fact { 'environment':
       content => 'production',
       target  => 'env',
       ensure  => present,
     }
+
+This will create a file `/etc/facter/facts.d/env.txt` containing:
+
+    environment=production
+
+If the `$target` is not specified, it defaults to the name of the resource.
