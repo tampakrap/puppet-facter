@@ -26,7 +26,7 @@ This will create a file `/etc/facter/facts.d/env.txt` containing:
 
     environment=production
 
-* `content is mandatory. It can not be empty string or whitespace.
+* `content` is mandatory. It can not be empty string or whitespace.
 * `$target` is optional. It defaults to the name of the resource.
 * `ensure` is optional. It defaults to `present`.
 
