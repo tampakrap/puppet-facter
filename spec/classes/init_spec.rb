@@ -1,49 +1,30 @@
 require 'spec_helper'
 
 describe 'facter' do
+  it { should contain_class('facter') }
   it { should compile.with_all_deps }
   it { should contain_class('facter::package') }
   it { should contain_file('/etc/facter').that_comes_before('File[/etc/facter/facts.d]').with_ensure('directory') }
   it { should contain_file('/etc/facter/facts.d').with_ensure('directory') }
 
-  context 'when using distro provider' do
-    context 'on Debian' do
-      let(:facts) { { :operatingsystem => 'Debian' } }
+  PuppetSpecFacts.facts_for_platform_by_name(
+    [
+      "Debian_wheezy_7.7_amd64_3.7.2_structured",
+      "CentOS_5.11_x86_64_3.7.1_structured",
+      "SLES_11.1_x86_64_3.1.1_stringified"
+    ]
+  ).each do |name, facthash|
+    let(:facts) { facthash }
+    context "on #{name}" do
       it { should contain_package('facter').with_ensure('present') }
     end
+  end
 
-    context 'on openSUSE, SLE' do
-      let(:facts) do
-        {
-          :osfamily               => 'Suse',
-          :operatingsystemrelease => '13.2',
-        }
-      end
-      it do should contain_package('facter').with(
-        'ensure'   => 'present',
-        'provider' => 'zypper',
-      ) end
-    end
-
-    context 'on openSUSE Tumbleweed' do
-      let(:facts) do
-        {
-          :osfamily               => 'Suse',
-          :operatingsystemrelease => '13.3',
-        }
-      end
-      let(:params) { { :ensure => 'latest' } }
-      it { should_not contain_package('facter') }
-      it { should contain_package('ruby2.1-rubygem-facter').with_ensure('latest') }
-      it { should contain_package('rubygem-facter').with_ensure('latest') }
-    end
-
-    context 'on Gentoo' do
+  context 'on Gentoo' do
+    context 'when using distro provider' do
       let(:facts) { { :osfamily => 'Gentoo' } }
-      it do should contain_package('dev-ruby/facter').with(
-        'ensure'   => 'present',
-        'provider' => 'portage',
-      ) end
+      let(:params) { { :provider => 'portage' } }
+      it { should contain_package('dev-ruby/facter').with_ensure('present') }
       it { should_not contain_package('facter') }
       it { should contain_class('facter::package::portage') }
     end
@@ -51,7 +32,6 @@ describe 'facter' do
 
   context 'when using gem as provider' do
     let(:params) { { :provider => 'gem' } }
-    let(:facts) { { :operatingsystem => 'Gentoo' } }
     it do should contain_package('facter').with(
       'ensure'   => 'present',
       'provider' => 'gem',
