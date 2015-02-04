@@ -11,7 +11,7 @@
 # }
 #
 class facter (
-  $package_name    = undef,
+  $package_name    = $facter::params::package_name,
   $ensure          = 'present',
   $provider        = $facter::params::provider,
   $install_options = undef,

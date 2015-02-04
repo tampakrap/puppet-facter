@@ -1,7 +1,6 @@
+require 'puppet_spec_facts'
+include PuppetSpecFacts
 require 'puppetlabs_spec_helper/module_spec_helper'
-
-PROJECT_ROOT = File.expand_path('..', File.dirname(__FILE__))
-$LOAD_PATH.unshift(File.join(PROJECT_ROOT, "lib"))
 
 fixture_path = File.expand_path(File.join(Dir.pwd, 'spec/fixtures'))
 env_module_path = ENV['MODULEPATH']

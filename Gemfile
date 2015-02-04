@@ -5,4 +5,5 @@ group :test do
   gem 'puppet', ENV['PUPPET_VERSION'] || '~> 3.7.3'
   gem 'puppetlabs_spec_helper'
   gem 'metadata-json-lint'
+  gem 'puppet_spec_facts'
 end
