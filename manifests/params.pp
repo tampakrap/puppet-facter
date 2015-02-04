@@ -1,7 +1,7 @@
 # Default params
 class facter::params {
   case $::osfamily {
-    'gentoo': { $provider = 'portage' }
-    'suse': { $provider = 'zypper' }
+    'gentoo': { $package_name = 'dev-ruby/facter' }
+    default : { $package_name = 'facter' }
   }
 }
