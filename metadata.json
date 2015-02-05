@@ -25,7 +25,7 @@
       "operatingsystemrelease": [ "6.0" ]
     },
     {
-      "operatingsystem": "SUSE",
+      "operatingsystem": "SLES",
       "operatingsystemrelease": [ "12" ]
     },
     {
