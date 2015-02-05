@@ -21,13 +21,11 @@ describe 'facter' do
   end
 
   context 'on Gentoo' do
-    context 'when using distro provider' do
-      let(:facts) { { :osfamily => 'Gentoo' } }
-      let(:params) { { :provider => 'portage' } }
-      it { should contain_package('dev-ruby/facter').with_ensure('present') }
-      it { should_not contain_package('facter') }
-      it { should contain_class('facter::package::portage') }
-    end
+    let(:facts) { { :osfamily => 'Gentoo' } }
+    let(:params) { { :provider => 'portage' } }
+    it { should contain_package('dev-ruby/facter').with_ensure('present') }
+    it { should_not contain_package('facter') }
+    it { should contain_class('facter::package::portage') }
   end
 
   context 'when using gem as provider' do
