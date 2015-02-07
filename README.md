@@ -1,9 +1,10 @@
 puppet-facter
 =============
 
-Manage facter package and create custom facts under `/etc/facter/facts.d`
+[![Build Status](https://travis-ci.org/tampakrap/puppet-facter.png?branch=master)](https://travis-ci.org/tampakrap/puppet-facter)
+[![Puppet Forge](http://img.shields.io/puppetforge/v/tampakrap/facter.svg)](https://forge.puppetlabs.com/tampakrap/facter)
 
-Travis Test status: [![Build Status](https://travis-ci.org/tampakrap/puppet-facter.png?branch=master)](https://travis-ci.org/tampakrap/puppet-facter)
+Manage facter package and create custom facts under `/etc/facter/facts.d`
 
 ## Facter Package Installation
 
