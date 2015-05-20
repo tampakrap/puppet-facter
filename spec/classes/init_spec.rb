@@ -11,21 +11,22 @@ describe 'facter' do
     [
       "Debian_wheezy_7.7_amd64_3.7.2_structured",
       "CentOS_5.11_x86_64_3.7.1_structured",
-      "SLES_11.1_x86_64_3.1.1_stringified"
+      "SUSE LINUX_12_12_x86_64_3.6.2_stringified",
+      "openSUSE project_Harlequin_13.2_x86_64_3.7.3_structured",
+      "Gentoo_2.2_amd64_structured",
     ]
   ).each do |name, facthash|
-    let(:facts) { facthash }
     context "on #{name}" do
-      it { should contain_package('facter').with_ensure('present') }
+      let(:facts) { facthash }
+      if facthash['osfamily'] == 'Gentoo'
+        let(:params) { { :provider => 'portage' } }
+        it { should contain_package('dev-ruby/facter').with_ensure('present') }
+        it { should_not contain_package('facter') }
+        it { should contain_class('facter::package::portage') }
+      else
+        it { should contain_package('facter').with_ensure('present') }
+      end
     end
-  end
-
-  context 'on Gentoo' do
-    let(:facts) { { :osfamily => 'Gentoo' } }
-    let(:params) { { :provider => 'portage' } }
-    it { should contain_package('dev-ruby/facter').with_ensure('present') }
-    it { should_not contain_package('facter') }
-    it { should contain_class('facter::package::portage') }
   end
 
   context 'when using gem as provider' do
