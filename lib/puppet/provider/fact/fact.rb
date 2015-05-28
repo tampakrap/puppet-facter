@@ -41,7 +41,7 @@ Puppet::Type.type(:fact).provide(:fact) do
     basename = File.basename(filename, ".txt")
 
     if provider.ensure == :present and provider.target == basename
-      result = "#{provider.name}=#{provider.content}\n"
+      result = "#{provider.name}=#{provider.content.to_s}\n"
     end
 
     return result
