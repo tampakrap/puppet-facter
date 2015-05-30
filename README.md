@@ -46,6 +46,7 @@ You can specify extra options for the package installation, such as alternative
 `provider` (in case you want to install it from Gem instead of distro package),
 additional `install_options` or alternative `package_name`, or alternative
 permissions for the /etc/facter and facts.d directories:
+
     class { 'facter':
         package_name    => 'rubygem-facter',
         install_options => {'--no-recommends', '--from': 'third_party_repo'},
