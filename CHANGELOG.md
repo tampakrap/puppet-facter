@@ -1,6 +1,20 @@
 CHANGELOG
 =========
 
+0.2.0
+-----
+
+2015-05-30
+
+* Add documentation about Parameters
+* Add params to change the permissions of the /etc/facter and facts.d directories
+* [#9](http://github.com/tampakrap/puppet-facter/issues/9) Updates in the `content` parameter:
+  * Accept boolean content
+  * Change its default value to 'true'
+  * Make it optional
+* [#8](http://github.com/tampakrap/puppet-facter/issues/8) Add option to remove unmanaged fact resources
+  * This introduces a new dependency to the [puppetlabs/stdlib](http://forge.puppetlabs.com/puppetlabs/stdlib) module
+
 0.1.2
 -----
 
