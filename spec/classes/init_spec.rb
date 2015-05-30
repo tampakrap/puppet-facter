@@ -43,8 +43,30 @@ describe 'facter' do
     it { should contain_package('custom_facter').with_ensure('present') }
   end
 
-  context "when purging unmanaged external facts" do
+  context 'when purging unmanaged external facts' do
     let(:params) { { :purge_unmanaged => true } }
     it { should contain_resources('fact').with_purge(true) }
+  end
+
+  context 'when using different permissions' do
+    let(:params) do
+      {
+        :owner => 'puppet',
+        :group => 'puppet',
+        :mode  => '0750',
+      }
+    end
+    it do should contain_file('/etc/facter').with(
+      :ensure => 'directory',
+      :owner  => 'puppet',
+      :group  => 'puppet',
+      :mode   => '0750',
+    ) end
+    it do should contain_file('/etc/facter/facts.d').with(
+      :ensure => 'directory',
+      :owner  => 'puppet',
+      :group  => 'puppet',
+      :mode   => '0750',
+    ) end
   end
 end
