@@ -1,4 +1,4 @@
-# This class should not be required directly
+# PRIVATE CLASS
 class facter::package {
   if $facter::provider == 'portage' {
     include facter::package::portage
