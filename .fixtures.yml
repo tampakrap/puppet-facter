@@ -2,5 +2,6 @@ fixtures:
   forge_modules:
     filemapper: "adrien/filemapper"
     portage: "gentoo/portage"
+    stdlib: "puppetlabs/stdlib"
   symlinks:
     facter: "#{source_dir}"

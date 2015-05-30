@@ -41,6 +41,10 @@
     {
       "name": "gentoo/portage",
       "version_requirement": ">= 2.1.0"
+    },
+    {
+      "name": "pupetlabs/stdlib",
+      "version_requirement": ">= 4.6.0"
     }
   ],
   "requirements": [

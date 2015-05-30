@@ -15,7 +15,10 @@ class facter (
   $ensure          = 'present',
   $provider        = undef,
   $install_options = undef,
+  $purge_unmanaged = false,
 ) inherits facter::params {
+
+  validate_bool($purge_unmanaged)
 
   include facter::package
 
@@ -23,4 +26,5 @@ class facter (
   ->
   file { '/etc/facter/facts.d': ensure  => 'directory' }
 
+  resources { 'fact': purge => $purge_unmanaged }
 }

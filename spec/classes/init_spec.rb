@@ -6,6 +6,7 @@ describe 'facter' do
   it { should contain_class('facter::package') }
   it { should contain_file('/etc/facter').that_comes_before('File[/etc/facter/facts.d]').with_ensure('directory') }
   it { should contain_file('/etc/facter/facts.d').with_ensure('directory') }
+  it { should contain_resources('fact').with_purge(false) }
 
   PuppetSpecFacts.facts_for_platform_by_name(
     [
@@ -40,5 +41,10 @@ describe 'facter' do
   context 'when using custom package name' do
     let(:params) { { :package_name => 'custom_facter' } }
     it { should contain_package('custom_facter').with_ensure('present') }
+  end
+
+  context "when purging unmanaged external facts" do
+    let(:params) { { :purge_unmanaged => true } }
+    it { should contain_resources('fact').with_purge(true) }
   end
 end
