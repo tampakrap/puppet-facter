@@ -19,9 +19,17 @@ Puppet::Type.newtype(:fact) do
 
   newproperty(:content) do
     desc "The content of the fact"
-    defaultto ''
+    defaultto 'true'
     validate do |value|
-      fail("Content cannot be empty or whitespace") if value.match(/^\s*$/)
+      fail("Content cannot be empty or whitespace") if munge(value).match(/^\s*$/)
+    end
+
+    munge do |value|
+      value.to_s
+    end
+
+    def insync?(is)
+      is == should
     end
   end
 
@@ -29,5 +37,4 @@ Puppet::Type.newtype(:fact) do
     desc "Target txt file to write under /etc/facter/facts.d"
     defaultto { @resource[:name] }
   end
-
 end

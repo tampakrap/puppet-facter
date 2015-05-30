@@ -3,8 +3,12 @@ require 'spec_helper'
 describe Puppet::Type.type(:fact) do
 
   context "when validating content" do
-    it "should be mandatory" do
-      expect { described_class.new(:name => "environment") }.to raise_error
+    it "can be optional" do
+      expect { described_class.new(:name => "environment") }.to_not raise_error
+    end
+
+    it "should return the default value" do
+      described_class.new(:name => "environment").should(:content).should == "true"
     end
 
     it "should reject empty string" do
@@ -18,6 +22,11 @@ describe Puppet::Type.type(:fact) do
     it "should accept other values" do
       expect { described_class.new(:name => "environment", :content => "production") }.to_not raise_error
       expect { described_class.new(:name => "environment", :content => " production") }.to_not raise_error
+    end
+
+    it "should convert boolean to string" do
+      described_class.new(:name => "is_hypervisor", :content => true).should(:content).should == "true"
+      described_class.new(:name => "is_hypervisor", :content => false).should(:content).should == "false"
     end
   end
 
