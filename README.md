@@ -61,12 +61,12 @@ your data though)
 
 ### Classes
 
-### Public Classes
+#### Public Classes
 
 - `facter`: Main class to install facter, /etc/facter/facts.d and purge
   unmanaged resources
 
-### Private Classes
+#### Private Classes
 
 - `facter::package`: Handles the package installation
 - `facter::params`: Various platform dependent variables
