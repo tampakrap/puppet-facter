@@ -1,6 +1,6 @@
 # == Class: facter
 #
-# Install the facter package and create the /etc/facter/facts.d directory
+# Install the facter package and create the /etc/puppetlabs/facter/facts.d directory
 #
 # == Parameters
 #
@@ -21,19 +21,19 @@
 # Default: undef
 #
 # [*purge_unmanaged*]
-# Whether to purge all unmanaged external facts from /etc/facter/facts.d
+# Whether to purge all unmanaged external facts from /etc/puppetlabs/facter/facts.d
 # Default: false
 #
 # [*owner*]
-# The owner of the /etc/facter and facts.d directories
+# The owner of the /etc/puppetlabs/facter and facts.d directories
 # Default: undef
 #
 # [*group*]
-# The group of the /etc/facter and facts.d directories
+# The group of the /etc/puppetlabs/facter and facts.d directories
 # Default: undef
 #
 # [*mode*]
-# The mode of the /etc/facter and facts.d directories
+# The mode of the /etc/puppetlabs/facter and facts.d directories
 # Default: undef
 #
 # == Example:
@@ -53,20 +53,24 @@ class facter (
   $owner           = undef,
   $group           = undef,
   $mode            = undef,
+  $manage_package  = true,
 ) inherits facter::params {
 
   validate_bool($purge_unmanaged)
+  validate_bool($manage_package)
 
-  include facter::package
+  if $manage_package {
+    include facter::package
+  }
 
-  file { '/etc/facter':
+  file { '/etc/puppetlabs/facter':
     ensure => 'directory',
     owner  => $owner,
     group  => $group,
     mode   => $mode,
   }
   ->
-  file { '/etc/facter/facts.d':
+  file { '/etc/puppetlabs/facter/facts.d':
     ensure => 'directory',
     owner  => $owner,
     group  => $group,

@@ -1,5 +1,5 @@
 Puppet::Type.newtype(:fact) do
-  @doc = "Create a custom fact as text file under /etc/facter/facts.d
+  @doc = "Create a custom fact as text file under /etc/puppetlabs/facter/facts.d
 
       fact { 'environment':
         content => 'production',
@@ -34,7 +34,7 @@ Puppet::Type.newtype(:fact) do
   end
 
   newproperty(:target) do
-    desc "Target txt file to write under /etc/facter/facts.d"
+    desc "Target txt file to write under /etc/puppetlabs/facter/facts.d"
     defaultto { @resource[:name] }
   end
 end

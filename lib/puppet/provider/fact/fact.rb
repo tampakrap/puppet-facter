@@ -9,11 +9,11 @@ Puppet::Type.type(:fact).provide(:fact) do
   @unlink_empty_files = true
 
   def select_file
-    "/etc/facter/facts.d/#{@property_hash[:target]}.txt"
+    "/etc/puppetlabs/facter/facts.d/#{@property_hash[:target]}.txt"
   end
 
   def self.target_files
-    Dir["/etc/facter/facts.d/*.txt"]
+    Dir["/etc/puppetlabs/facter/facts.d/*.txt"]
   end
 
   def self.parse_file(filename, contents)
